@@ -26,6 +26,16 @@
 # `gcloud builds submit --config=cloudbuild.yaml --substitutions=_ZONE=us-central1-b,_CLUSTER=demo-app-staging .`
 
 steps:
+-id: 'environment variables'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    PROJECT_ID="team-2-a"
+    ZONE="europe-north1-a"
+    REGION="europe-north1"
+
+
 - id: 'Deploy application to cluster'
   name: 'gcr.io/k8s-skaffold/skaffold:v0.20.0'
   entrypoint: 'bash'
