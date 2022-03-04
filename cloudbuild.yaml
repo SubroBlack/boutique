@@ -32,10 +32,8 @@ steps:
   args:
   - '-c'
   - >
-
-  
-    gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a
-    skaffold run -f=skaffold.yaml --default-repo=gcr.io/$_PROJECT_ID;
+    gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
+    skaffold run -f=skaffold.yaml --default-repo=gcr.io/$PROJECT_ID;
 
 # Add more power, and more time, for heavy Skaffold build
 timeout: '3600s'
@@ -45,3 +43,4 @@ options:
 # [END cloudbuild_microservice_demo_cloudbuild]
 
 #  gcloud container clusters get-credentials $_NAME --region=_REGION --project=$_PROJECT_ID;
+#  gcloud container clusters get-credentials --zone=$_ZONE $_CLUSTER;
