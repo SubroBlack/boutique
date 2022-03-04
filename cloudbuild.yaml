@@ -32,12 +32,9 @@ steps:
   args:
   - '-c'
   - >
-    export PROJECT_ID="team-2-a";
-    export ZONE="europe-north1-a";
-    export NAME="gke-boutique-cluster";
-    REGION="europe-north1";
-    gcloud container clusters get-credentials $NAME --region=$REGION --project=$PROJECT_ID;
-    skaffold run -f=skaffold.yaml --default-repo=gcr.io/$PROJECT_ID;
+
+    gcloud container clusters get-credentials $_NAME --region=$_REGION --project=$_PROJECT_ID;
+    skaffold run -f=skaffold.yaml --default-repo=gcr.io/$_PROJECT_ID;
 
 # Add more power, and more time, for heavy Skaffold build
 timeout: '3600s'
