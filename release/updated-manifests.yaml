@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -64,6 +65,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: emailservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -77,6 +79,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkoutservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -134,6 +137,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: checkoutservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -147,6 +151,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recommendationservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -195,6 +200,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: recommendationservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -208,6 +214,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -283,6 +290,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -296,6 +304,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-external
+  namespace: development
 spec:
   type: LoadBalancer
   selector:
@@ -309,6 +318,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paymentservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -353,6 +363,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: paymentservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -366,6 +377,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -412,6 +424,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productcatalogservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -425,6 +438,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cartservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -466,6 +480,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cartservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -530,6 +545,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -575,6 +591,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: currencyservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -588,6 +605,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -634,6 +652,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: shippingservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
@@ -700,6 +719,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
+  namespace: development
 spec:
   selector:
     matchLabels:
@@ -748,6 +768,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: adservice
+  namespace: development
 spec:
   type: ClusterIP
   selector:
