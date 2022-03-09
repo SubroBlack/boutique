@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: skaffold/v2beta18
+apiVersion: skaffold/v2beta27
 kind: Config
 metadata:
   name: app
@@ -105,7 +105,7 @@ profiles:
 
 ---
 
-apiVersion: skaffold/v2beta18
+apiVersion: skaffold/v2beta27
 kind: Config
 metadata:
   name: loadgenerator
