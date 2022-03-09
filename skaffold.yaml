@@ -79,10 +79,10 @@ profiles:
       machineType: N1_HIGHCPU_32
       timeout: 4000s
   deploy:
-  kubeContext: "gke_team-2-a_europe-north1_gke-boutique-cluster"
-  kubectl:
-    manifests:
-    - ./release/updated-manifests.yaml
+    kubeContext: "gke_team-2-a_europe-north1_gke-boutique-cluster"
+    kubectl:
+      manifests:
+      - ./release/updated-manifests.yaml
   # deploy:
   #   kubectl:
   #     manifests:
