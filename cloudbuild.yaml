@@ -39,7 +39,7 @@ steps:
 # Add more power, and more time, for heavy Skaffold build
 timeout: '3600s'
 options:
-  machineType: 'N1_HIGHCPU_32'
+  machineType: 'E2_HIGHCPU_32'
   
 # [END cloudbuild_microservice_demo_cloudbuild]
 
