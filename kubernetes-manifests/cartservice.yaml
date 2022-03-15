@@ -33,7 +33,7 @@ spec:
         ports:
         - containerPort: 7070
         env:
-        - name: REDIS_ADDR
+        - name: _REDIS_ADD
           value: "redis-cart:6379"
         resources:
           requests:
