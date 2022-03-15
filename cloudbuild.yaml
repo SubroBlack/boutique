@@ -33,7 +33,7 @@ steps:
   - '-c'
   - >
     gcloud container clusters get-credentials infra-test --region us-west1 --project test-project-ws-342013;
-    kubectl config set-context --current --namespace=test
+    kubectl config set-context --current --namespace=test;
     skaffold run -p gcb --default-repo=gcr.io/test-project-ws-342013;
     
 # Add more power, and more time, for heavy Skaffold build
