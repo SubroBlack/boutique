@@ -39,7 +39,7 @@ steps:
 # Add more power, and more time, for heavy Skaffold build
 timeout: '3600s'
 options:
-  machineType: 'N1_HIGHCPU_96'
+  machineType: 'N1_HIGHCPU_32'
   
 # [END cloudbuild_microservice_demo_cloudbuild]
 
@@ -50,4 +50,3 @@ options:
 #correct
 #gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
 #skaffold run -p gcb --default-repo=gcr.io/team-2-a;
-#
