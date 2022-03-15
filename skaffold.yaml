@@ -52,7 +52,7 @@ deploy:
   kubectl:
     manifests:
     - ./kubernetes-manifests/adservice.yaml
-    - ./kubernetes-manifests/cartservice.yaml
+    - ./kubernetes-manifests/cartservice.yaml --_REDIS_ADD=${_REDIS_ADD}
     - ./kubernetes-manifests/checkoutservice.yaml
     - ./kubernetes-manifests/currencyservice.yaml
     - ./kubernetes-manifests/emailservice.yaml
@@ -90,18 +90,18 @@ profiles:
       value: Dockerfile.debug
 
 ---
-
-apiVersion: skaffold/v2beta18
-kind: Config
-metadata:
-  name: loadgenerator
-requires:
-  - configs: [app]
-build:
-  artifacts:
-  - image: loadgenerator
-    context: src/loadgenerator
-deploy:
-  kubectl:
-    manifests:
-    - ./kubernetes-manifests/loadgenerator.yaml
+#
+#apiVersion: skaffold/v2beta18
+#kind: Config
+#metadata:
+#  name: loadgenerator
+#requires:
+#  - configs: [app]
+#build:
+#  artifacts:
+#  - image: loadgenerator
+#    context: src/loadgenerator
+#deploy:
+#  kubectl:
+#    manifests:
+#    - ./kubernetes-manifests/loadgenerator.yaml
