@@ -52,7 +52,7 @@ deploy:
   kubectl:
     manifests:
     - ./kubernetes-manifests/adservice.yaml
-    - ./kubernetes-manifests/cartservice.yaml --_REDIS_ADD=${_REDIS_ADD}
+    - ./kubernetes-manifests/cartservice.yaml
     - ./kubernetes-manifests/checkoutservice.yaml
     - ./kubernetes-manifests/currencyservice.yaml
     - ./kubernetes-manifests/emailservice.yaml
