@@ -79,8 +79,8 @@ profiles:
       machineType: N1_HIGHCPU_32
       timeout: 4000s
   deploy:
-    kubeContext: "test-project-ws-342013_us-west1_infra-test"
-    #kubeContext: "gke_microservices-test-342013_europe-north1_gke-boutique-cluster"
+    kubeContext: "gke_test-project-ws-342013_us-west1_infra-test"
+    # kubeContext: "gke_team-2-a_europe-north1_gke-boutique-cluster"
     kubectl:
       manifests:
       - ./release/updated-manifests.yaml
