@@ -63,6 +63,7 @@ deploy:
     # - ./kubernetes-manifests/redis.yaml
     # - ./kubernetes-manifests/shippingservice.yaml
     - ./release/updated-manifests.yaml
+    - ./release/ingress.yaml
 profiles:
 # "gcb" profile allows building and pushing the images
 # on Google Container Builder without requiring docker
@@ -84,6 +85,7 @@ profiles:
     kubectl:
       manifests:
       - ./release/updated-manifests.yaml
+      - ./release/ingress.yaml
   # deploy:
   #   kubectl:
   #     manifests:
