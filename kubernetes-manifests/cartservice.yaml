@@ -34,7 +34,7 @@ spec:
         - containerPort: 7070
         env:
         - name: _REDIS_ADD
-          value: "somehting${_REDIS_ADD}:6379"
+          value: "${_REDIS_ADD}:6379"
         resources:
           requests:
             cpu: 200m
