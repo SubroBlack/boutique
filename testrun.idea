@@ -1,3 +1,4 @@
 gcloud container clusters get-credentials --region=europe-north1 boutique-gke-cluster;
 skaffold run -f=skaffold.yaml -p gcb --default-repo=gcr.io/blackbox-342109;
 removed redis creation in skaffold.yaml
+added ingress
