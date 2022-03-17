@@ -34,7 +34,6 @@ steps:
   - >
     gcloud container clusters get-credentials $_CLUSTER --region=$_REGION;
     kubectl config set-context --current --namespace=development;
-    skaffold delete;
     skaffold run -f=skaffold.yaml -p gcb --default-repo=$REPO_NAME;
 
 # Add more power, and more time, for heavy Skaffold build
