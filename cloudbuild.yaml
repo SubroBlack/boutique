@@ -25,7 +25,6 @@
 # Example invocation:
 # `gcloud builds submit --config=cloudbuild.yaml --substitutions=_ZONE=us-central1-b,_CLUSTER=demo-app-staging .`
 
-steps:
 #- id: 'Cleanup First'
 #  name: 'gcr.io/k8s-skaffold/skaffold:v1.36.1'
 #  entrypoint: 'bash'
@@ -35,7 +34,7 @@ steps:
 #    gcloud container clusters get-credentials $_CLUSTER --region=$_REGION;
 #    kubectl config set-context --current --namespace=development;
 #    skaffold delete;
-
+steps:
 - id: 'Deploy application to cluster'
   name: 'gcr.io/k8s-skaffold/skaffold:v1.36.1'
   entrypoint: 'bash'
