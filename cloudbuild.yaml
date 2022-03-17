@@ -26,7 +26,8 @@
 # `gcloud builds submit --config=cloudbuild.yaml --substitutions=_ZONE=us-central1-b,_CLUSTER=demo-app-staging .`
 
 steps:
-- id: 'Deploy application to cluster'
+
+- id: 'Cleanup First' #Not needed all the time 
   name: 'gcr.io/k8s-skaffold/skaffold:v1.36.1'
   entrypoint: 'bash'
   args:
@@ -35,11 +36,20 @@ steps:
     gcloud container clusters get-credentials $_CLUSTER --region=$_REGION;
     kubectl config set-context --current --namespace=development;
     skaffold delete;
-    skaffold run -f=skaffold.yaml -p gcb --default-repo=$REPO_NAME;
+
+- id: 'Deploy application to cluster'
+  name: 'gcr.io/k8s-skaffold/skaffold:v1.36.1'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - >
+    gcloud container clusters get-credentials $_CLUSTER --region=$_REGION;
+    kubectl config set-context --current --namespace=development;
+#    skaffold run -f=skaffold.yaml -p gcb --default-repo=$REPO_NAME;
 
 # Add more power, and more time, for heavy Skaffold build
 timeout: '3600s'
 options:
-  machineType: 'N1_HIGHCPU_8'
+  machineType: ''E2_HIGHCPU_32'
   
 # [END cloudbuild_microservice_demo_cloudbuild]
