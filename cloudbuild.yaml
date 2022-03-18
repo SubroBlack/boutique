@@ -35,17 +35,20 @@ steps:
     gcloud container clusters get-credentials infra-test --region us-west1 --project test-project-ws-342013;
     kubectl config set-context --current --namespace=test;
     skaffold run -p gcb --default-repo=gcr.io/test-project-ws-342013;
+    fi
+
+- id: 'create ingress'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'bash'
+  args: ['./bash.sh']
     
 # Add more power, and more time, for heavy Skaffold build
-timeout: '3600s'
 options:
   machineType: 'E2_HIGHCPU_32'
   
+timeout: '6600s'
+  
 # [END cloudbuild_microservice_demo_cloudbuild]
-
-#  gcloud container clusters get-credentials $_NAME --region=_REGION --project=$_PROJECT_ID;
-#  gcloud container clusters get-credentials --zone=$_ZONE $_CLUSTER;
-#  skaffold run -f=skaffold.yaml --default-repo=gcr.io/team-2-a;
 
 #correct
 #gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
