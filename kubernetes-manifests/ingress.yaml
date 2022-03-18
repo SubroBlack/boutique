@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: my-ingress
 spec:
+selector:
+    app: frontend
   defaultBackend:
       service:
         name: frontend
@@ -11,7 +13,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /*
+      - path: /
         pathType: ImplementationSpecific
         backend:
           service:
