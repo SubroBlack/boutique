@@ -35,7 +35,6 @@ steps:
     gcloud container clusters get-credentials infra-test --region us-west1 --project test-project-ws-342013;
     kubectl config set-context --current --namespace=test;
     skaffold run -p gcb --default-repo=gcr.io/test-project-ws-342013;
-    fi
 
 - id: 'create ingress'
   name: 'hashicorp/terraform:1.0.0'
