@@ -29,4 +29,12 @@ gcloud compute ssl-policies create $SSL_POLICY_NAME --profile COMPATIBLE --min-t
 
 # Deploy the Kubernetes manifests in appropriate folder
 kubectl apply -f ./release/release-cluster
-fi 
+
+# Wait for the ManagedCertificate to be provisioned. This usually takes about 30 minutes.
+kubectl get managedcertificates 
+
+# Remove the default LoadBalancer Service not used at this point
+kubectl delete service frontend-external
+
+# Remove the loadgenerator Deployment not used at this point
+kubectl delete deployment loadgenerator
