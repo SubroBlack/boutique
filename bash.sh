@@ -1,8 +1,14 @@
 #!/bin/bash
 gcloud components install kubectl
 
-# Name hard-coded in: frontendconfig.yaml
+# Create the static public IP address
 STATIC_IP_NAME=online-boutique-ip
+# gcloud compute addresses create $STATIC_IP_NAME --global
+
+# Grab this public IP address and update your DNS
+gcloud compute addresses describe $STATIC_IP_NAME \
+    --global \
+    --format "value(address)"
 
 # Set up Cloud Armor
 SECURITY_POLICY_NAME=online-boutique-security-policy # Name hard-coded in: backendconfig.yaml
