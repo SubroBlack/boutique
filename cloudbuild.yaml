@@ -35,9 +35,19 @@ steps:
     gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
     kubectl config set-context --current --namespace=development
     skaffold run -p gcb --default-repo=gcr.io/team-2-a;
+
+
+- id: 'create ingress'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['./bash.sh']
     
 # Add more power, and more time, for heavy Skaffold build
-timeout: '3600s'
+options:
+  machineType: 'E2_HIGHCPU_32'
+
+# Add more power, and more time, for heavy Skaffold build
+timeout: '6000s'
 options:
   machineType: 'N1_HIGHCPU_8'
   
