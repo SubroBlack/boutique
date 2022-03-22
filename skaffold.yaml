@@ -24,26 +24,57 @@ build:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
   - image: emailservice
     context: src/emailservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/emailservice
   - image: productcatalogservice
     context: src/productcatalogservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/productcatalogservice    
   - image: recommendationservice
     context: src/recommendationservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/recommendationservice
   - image: shippingservice
     context: src/shippingservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/shippingservice
   - image: checkoutservice
     context: src/checkoutservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/checkoutservice
   - image: paymentservice
     context: src/paymentservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/paymentservice
   - image: currencyservice
     context: src/currencyservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/currencyservice
   - image: cartservice
     context: src/cartservice/src
     docker:
       dockerfile: Dockerfile
+      cacheFrom:
+      - gcr.io/team-2-a/cartservice
   - image: frontend
     context: src/frontend
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/frontend
   - image: adservice
     context: src/adservice
+    docker:
+      cacheFrom:
+      - gcr.io/team-2-a/adservice
+  googleCloudBuild:
+    projectId: team-2-a
   tagPolicy:
     gitCommit: {}
   local:
@@ -63,7 +94,6 @@ deploy:
     # - ./kubernetes-manifests/redis.yaml
     # - ./kubernetes-manifests/shippingservice.yaml
     - ./release/updated-manifests.yaml
-    - ./release/ingress.yaml
 profiles:
 # "gcb" profile allows building and pushing the images
 # on Google Container Builder without requiring docker
@@ -85,7 +115,6 @@ profiles:
     kubectl:
       manifests:
       - ./release/updated-manifests.yaml
-      - ./release/ingress.yaml
   # deploy:
   #   kubectl:
   #     manifests:
