@@ -24,9 +24,9 @@ build:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
   - image: emailservice
     context: src/emailservice
-    docker:
-      cacheFrom:
-      - gcr.io/team-2-a/emailservice
+    kaniko:
+      cache:
+        repo: gcr.io/team-2-a/emailservice
   
   - image: productcatalogservice
     context: src/productcatalogservice
