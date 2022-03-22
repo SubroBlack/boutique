@@ -114,6 +114,7 @@ profiles:
 - name: gcb
   build:
     googleCloudBuild:
+      projectId: team-2-a
       diskSizeGb: 300
       machineType: N1_HIGHCPU_32
       timeout: 4000s
