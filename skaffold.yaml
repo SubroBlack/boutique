@@ -83,7 +83,12 @@ build:
       cacheFrom:
       - gcr.io/team-2-a/adservice
   googleCloudBuild:
-    projectId: team-2-a
+      projectId: team-2-a
+      diskSizeGb: 300
+      machineType: N1_HIGHCPU_32
+      timeout: 4000s
+      dockerImage: gcr.io/cloud-builders/docker
+      kanikoImage: gcr.io/kaniko-project/executor
   tagPolicy:
     gitCommit: {}
   local:
