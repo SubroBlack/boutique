@@ -27,72 +27,61 @@ build:
     docker:
       cacheFrom:
       - gcr.io/team-2-a/emailservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: productcatalogservice
     context: src/productcatalogservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/productcatalogservice    
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: recommendationservice
     context: src/recommendationservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/recommendationservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: shippingservice
     context: src/shippingservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/shippingservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: checkoutservice
     context: src/checkoutservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/checkoutservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: paymentservice
     context: src/paymentservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/paymentservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: currencyservice
     context: src/currencyservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/currencyservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: cartservice
     context: src/cartservice/src
     docker:
       dockerfile: Dockerfile
       cacheFrom:
       - gcr.io/team-2-a/cartservice
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: frontend
     context: src/frontend
     docker:
       cacheFrom:
       - gcr.io/team-2-a/frontend
-  googleCloudBuild:
-    projectId: team-2-a
+  
   - image: adservice
     context: src/adservice
     docker:
       cacheFrom:
       - gcr.io/team-2-a/adservice
-  googleCloudBuild:
-    projectId: team-2-a
   
   tagPolicy:
     gitCommit: {}
