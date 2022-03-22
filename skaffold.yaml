@@ -82,7 +82,8 @@ build:
     docker:
       cacheFrom:
       - gcr.io/team-2-a/adservice
-  
+  googleCloudBuild:
+    projectId: team-2-a
   tagPolicy:
     gitCommit: {}
   local:
