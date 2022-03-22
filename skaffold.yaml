@@ -29,7 +29,6 @@ build:
       - gcr.io/team-2-a/emailservice
   googleCloudBuild:
     projectId: team-2-a
-  
   - image: productcatalogservice
     context: src/productcatalogservice
     docker:
