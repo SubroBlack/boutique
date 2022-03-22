@@ -89,8 +89,7 @@ build:
       timeout: 4000s
       dockerImage: gcr.io/cloud-builders/docker
       kanikoImage: gcr.io/kaniko-project/executor
-  cluster:
-    namespace: development
+  cluster: {}
   tagPolicy:
     gitCommit: {}
   local:
