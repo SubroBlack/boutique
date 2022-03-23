@@ -39,7 +39,7 @@ steps:
   - '-c'
   - >
     gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
-    kubectl config set-context --current --namespace=development;
+    kubectl config set-context --current --namespace=staging;
     skaffold run -p gcb --default-repo=gcr.io/team-2-a;
 
 
