@@ -33,34 +33,6 @@ steps:
   - '-c'
   - >
     gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
-    curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.12 > asmcli
-    chmod +x asmcli
-    ./asmcli install \
-    --project_id $_PROJECT_ID \
-    --cluster_name $_NAME \
-    --cluster_location $_ZONE \
-    --fleet_id $_PROJECT_ID \
-    --output_dir ./asm_output \
-    --enable_all \
-    --ca mesh_ca \
-    --enable_gcp_components
-    kubectl create namespace istio-gateway
-    kubectl get deploy -n istio-system -l app=istiod -o \
-    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}'  
-
-    
-
-    kubectl label namespace istio-gateway \
-    istio.io/rev=$(kubectl get deploy -n istio-system -l app=istiod -o \
-    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}') --overwrite
-
-    cd ~/asm_output
-    kubectl apply -n istio-gateway \
-    -f samples/gateways/istio-ingressgateway
-
-    kubectl label namespace development istio-injection- istio.io/rev=$(kubectl get deploy -n istio-system -l app=istiod -o \
-    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}') --overwrite
-
     kubectl config set-context --current --namespace=development
     skaffold run -p gcb --default-repo=gcr.io/team-2-a;
 
