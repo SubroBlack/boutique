@@ -48,17 +48,18 @@ steps:
     kubectl get deploy -n istio-system -l app=istiod -o \
     jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}'  
 
-    REVISION=$(kubectl get deploy -n istio-system -l app=istiod -o \
-    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}')
+    
 
     kubectl label namespace istio-gateway \
-    istio.io/rev=$REVISION --overwrite
+    istio.io/rev=$(kubectl get deploy -n istio-system -l app=istiod -o \
+    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}') --overwrite
 
     cd ~/asm_output
     kubectl apply -n istio-gateway \
     -f samples/gateways/istio-ingressgateway
 
-    kubectl label namespace development istio-injection- istio.io/rev=$REVISION --overwrite
+    kubectl label namespace development istio-injection- istio.io/rev=$(kubectl get deploy -n istio-system -l app=istiod -o \
+    jsonpath={.items[*].metadata.labels.'istio\.io\/rev'}'{"\n"}') --overwrite
 
     kubectl config set-context --current --namespace=development
     skaffold run -p gcb --default-repo=gcr.io/team-2-a;
