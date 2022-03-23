@@ -26,6 +26,12 @@
 # `gcloud builds submit --config=cloudbuild.yaml --substitutions=_ZONE=us-central1-b,_CLUSTER=demo-app-staging .`
 
 steps:
+- id: 'create istio'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['./istio.sh']
+
+
 - id: 'Deploy application to cluster'
   name: 'gcr.io/k8s-skaffold/skaffold:v1.36.0'
   entrypoint: 'bash'
@@ -33,7 +39,6 @@ steps:
   - '-c'
   - >
     gcloud container clusters get-credentials gke-boutique-cluster --region europe-north1 --project team-2-a;
-    kubectl apply -f ./release/istio-manifests.yaml
     kubectl config set-context --current --namespace=development;
     skaffold run -p gcb --default-repo=gcr.io/team-2-a;
 
