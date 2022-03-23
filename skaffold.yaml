@@ -76,7 +76,7 @@ profiles:
   build:
     googleCloudBuild:
       diskSizeGb: 300
-      machineType: N1_HIGHCPU_32
+      machineType: E2_HIGHCPU_32
       timeout: 4000s
   deploy:
     kubeContext: "gke_team-2-a_europe-north1_gke-boutique-cluster"
