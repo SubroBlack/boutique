@@ -286,19 +286,19 @@ spec:
               cpu: 200m
               memory: 128Mi
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: frontend
-#   # namespace: development
-# spec:
-#   type: ClusterIP
-#   selector:
-#     app: frontend
-#   ports:
-#   - name: http
-#     port: 80
-#     targetPort: 8080
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  # namespace: development
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
 # ---
 # apiVersion: v1
 # kind: Service
