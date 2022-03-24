@@ -37,4 +37,4 @@ kubectl get managedcertificates
 #kubectl delete service frontend-external
 
 # Remove the loadgenerator Deployment not used at this point
-kubectl delete deployment loadgenerator
+#kubectl delete deployment loadgenerator
