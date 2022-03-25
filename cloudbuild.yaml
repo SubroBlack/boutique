@@ -1,43 +1,26 @@
-# Copyright 2020 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# [START cloudbuild_microservice_demo_cloudbuild]
-
-# This configuration file is used to build and deploy the app into a
-# GKE cluster using Google Cloud Build.
-#
-# PREREQUISITES:
-# - Cloud Build service account must have role: "Kubernetes Engine Developer"
-
-# USAGE:
-# GCP zone and GKE target cluster must be specified as substitutions
-# Example invocation:
-# `gcloud builds submit --config=cloudbuild.yaml --substitutions=_ZONE=us-central1-b,_CLUSTER=demo-app-staging .`
-
 steps:
+
 - id: 'Deploy application to cluster'
-  name: 'gcr.io/k8s-skaffold/skaffold:v0.20.0'
+  name: 'gcr.io/k8s-skaffold/skaffold:v1.36.0'
   entrypoint: 'bash'
   args:
   - '-c'
   - >
-    gcloud container clusters get-credentials --zone=$_ZONE $_CLUSTER;
-    skaffold run -f=skaffold.yaml --default-repo=gcr.io/$PROJECT_ID;
+    gcloud container clusters get-credentials $_CLUSTER --region $_REGION --project $_PROJECT_ID;
+    kubectl config set-context --current --namespace=$BRANCH_NAME;
+    skaffold run -p gcb --default-repo=gcr.io/$_PROJECT_ID;
+
+
+- id: 'create ingress'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['./bash.sh']
+    
+# Add more power, and more time, for heavy Skaffold build
+options:
+  machineType: 'E2_HIGHCPU_32'
 
 # Add more power, and more time, for heavy Skaffold build
-timeout: '3600s'
-options:
-  machineType: 'N1_HIGHCPU_8'
-  
-# [END cloudbuild_microservice_demo_cloudbuild]
+timeout: '6000s'
+
+
